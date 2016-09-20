@@ -11,8 +11,8 @@ def create_dot(canvas, x, y, r, fill=False):
 
 
 class Display(Canvas):
-    def __init__(self, root):
-        super().__init__(root, width=500, height=500)
+    def __init__(self, root, width=500, height=500):
+        super().__init__(root, width=width, height=height)
         self.pack()
         self.dots = {}
 
@@ -30,7 +30,7 @@ class Display(Canvas):
 
 if __name__ == '__main__':
     root = Tk()
-    display = Display(root)
+    display = Display(root, 500, 500)
     for i in range(10):
         display.show(''.join(str(random.randint(0, 1)) for x in range(8)))
         time.sleep(1)
