@@ -25,7 +25,7 @@ class Display(Canvas):
         self.char = self.create_text(100, 75, text='', font=("Default", 40))
         self.sentence = self.create_text(25, 150, text=self.last_chars,
                                          font=("Default", 12),
-                                         anchor='w', width=160)   
+                                         anchor='nw', width=160)   
 
     def show(self, char):
         code = LATIN[char]
@@ -39,7 +39,7 @@ class Display(Canvas):
         self.__update_last_chars(char)
         self.delete(self.sentence)
         self.sentence = self.create_text(25, 160, text=self.last_chars, font=("Default", 12),
-                         anchor='w', width=160)      
+                                         anchor='nw', width=160)      
         self.update()
         
     def __update_last_chars(self, char):
@@ -54,4 +54,4 @@ if __name__ == '__main__':
     display = Display(root, width=200, height=200)
     for i in range(50):
         display.show(chr(random.randrange(97, 122)))
-        time.sleep(0.1)
+        time.sleep(0.2)
