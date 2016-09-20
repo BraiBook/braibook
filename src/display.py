@@ -22,9 +22,9 @@ class Display(Canvas):
                 self.dots[i + j * 2] = dot
 
     def show(self, code):
-        for key, value in zip(range(1, 9), code):
+        for key, value in zip(range(8), code):
             fill = '#000000' if int(value) else '#ffffff'
-            self.itemconfig(key, fill=fill)
+            self.itemconfig(self.dots[key], fill=fill)
         self.update()
 
 
@@ -32,5 +32,5 @@ if __name__ == '__main__':
     root = Tk()
     display = Display(root, 500, 500)
     for i in range(10):
-        display.show(''.join(str(random.randint(0, 1)) for x in range(8)))
+        display.show(random.choice((0, 1)) for x in range(8))
         time.sleep(1)
