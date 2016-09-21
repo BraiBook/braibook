@@ -21,6 +21,7 @@ class Display(Canvas):
         for j, i in product(range(4), range(2)):
             dot = create_dot(self, 30 * (i + 1), 30 * (j + 1), 9)
             self.dots[i + j * 2] = dot
+        self.dots[3], self.dots[1], self.dots[4], self.dots[2] = self.dots[1], self.dots[2], self.dots[3], self.dots[4] 
         self.char = self.create_text(130, 75, text='',
                                      font=("liberation serif", 60))
         self.sentence = self.create_text(100, 160, text=self.buffer,
