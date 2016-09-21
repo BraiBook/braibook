@@ -16,12 +16,10 @@ class Display(Canvas):
     def __init__(self, root, width=200, height=200):
         super().__init__(root, width=width, height=height)
         self.pack()
-        self.dots = {}
         self.buffer = deque(maxlen=15)
-        for j, i in product(range(4), range(2)):
-            dot = create_dot(self, 30 * (i + 1), 30 * (j + 1), 9)
-            self.dots[i + j * 2] = dot
-        self.dots[3], self.dots[1], self.dots[4], self.dots[2] = self.dots[1], self.dots[2], self.dots[3], self.dots[4] 
+        dots = [create_dot(self, 30 * (x + 1), 30 * (y + 1), 9)
+                for x, y in product(range(2), range(4))]
+        self.dots = dict(zip((1, 2, 3, 7, 4, 5, 6, 8), dots))
         self.char = self.create_text(130, 75, text='',
                                      font=("liberation serif", 60))
         self.sentence = self.create_text(100, 160, text=self.buffer,
@@ -31,7 +29,7 @@ class Display(Canvas):
     def show(self, char):
         for dot in range(1, 9):
             fill = '#000000' if str(dot) in str(LATIN[char]) else '#ffffff'
-            self.itemconfig(self.dots[dot-1], fill=fill)
+            self.itemconfig(self.dots[dot], fill=fill)
         self.buffer.append(char)
         self.itemconfig(self.char, text=char)
         self.itemconfig(self.sentence, text=''.join(self.buffer))
