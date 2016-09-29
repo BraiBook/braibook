@@ -23,8 +23,8 @@ class hv5522:
         self.data_in = value
 
     def clock_cycle(self):
-        self.__rising_edge()
-        self.__falling_edge()
+        self.__clk_rising_edge()
+        self.__clk_falling_edge()
 
     def __clk_rising_edge(self):
         self.clk = 1
@@ -57,6 +57,9 @@ class hv5522:
         self.__blanking = 0
         self.__update()
 
+    def output_updated(self):
+        return
+
     def __update(self):
         if(self.__enable):
             self.latch_out = self.shift_reg
@@ -66,8 +69,10 @@ class hv5522:
                 self.hv_out = 0xFF
             else:
                 self.hv_out = 0x00
+            self.output_updated()
         else:
             if(self.__polarity):
                 self.hv_out = ~self.latch_out
             else:
                 self.hv_out = self.latch_out
+            self.output_updated()
