@@ -34,3 +34,13 @@ class Display(Canvas):
         self.itemconfig(self.char, text=char)
         self.itemconfig(self.sentence, text=''.join(self.buffer))
         self.update()
+
+    def show_byte(self, byte):
+        bit_list = [(byte >> bit) & 1 for bit in range(7, -1, -1)]
+        for dot in range(1, 9):
+            fill = '#000000' if bit_list[dot-1] else '#ffffff'
+            self.itemconfig(self.dots[dot], fill=fill)
+        self.buffer.append('\b')
+        self.itemconfig(self.char, text='\b')
+        self.itemconfig(self.sentence, text=''.join(self.buffer))
+        self.update()
