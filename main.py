@@ -18,14 +18,14 @@ def update_display(hv5522):
 if __name__ == '__main__':
     main = Tk()
     display = Display(main, width=200, height=200)
+    display2 = Display(main, width=200, height=200)
     hv5522.output_updated = types.MethodType(update_display, hv5522)
 
     signal_generator = signal_generator(hv5522)
     for code_point in str2brl('Hello world! This is a braille display test...', 'en-gb-g1.utb'):
         signal_generator.generate_braille(code_point)
+        time.sleep(0.5)
 
-    main2 = Tk()
-    display2 = Display(main, width=200, height=200)
     for c in 'Hello world! this is a braille display test...':
-        display.show(c)
+        display2.show(c)
         time.sleep(0.5)
