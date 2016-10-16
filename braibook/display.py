@@ -4,6 +4,7 @@ A simple display to show Braille characters.
 from tkinter import Canvas
 from itertools import product
 from collections import deque
+from .unicode_gen import brl2str, byte2brl
 
 from .tables import LATIN
 
@@ -13,6 +14,7 @@ def create_dot(canvas, x, y, r, fill=False):
 
 
 class Display(Canvas):
+
     def __init__(self, root, width=200, height=200):
         super().__init__(root, width=width, height=height)
         self.pack()
@@ -38,9 +40,10 @@ class Display(Canvas):
     def show_byte(self, byte):
         bit_list = [(byte >> bit) & 1 for bit in range(7, -1, -1)]
         for dot in range(1, 9):
-            fill = '#000000' if bit_list[dot-1] else '#ffffff'
+            fill = '#000000' if bit_list[-dot] else '#ffffff'
             self.itemconfig(self.dots[dot], fill=fill)
-        self.buffer.append('\b')
-        self.itemconfig(self.char, text='\b')
+        char = brl2str(byte2brl(byte)).rstrip('\n')
+        self.buffer.append(char)
+        self.itemconfig(self.char, text=char)
         self.itemconfig(self.sentence, text=''.join(self.buffer))
         self.update()

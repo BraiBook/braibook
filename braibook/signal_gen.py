@@ -13,12 +13,15 @@ class signal_generator:
     def generate_braille(self, braille_unicode):
         for code_point in braille_unicode:
             self.unibits = self.get_byte(code_point)
-            for bit in self.unibits:
+            for bit in reversed(self.unibits):
                 self.hv5522.data_in = bit
                 self.hv5522.clock_cycle()
             self.hv5522.set_enable()
             self.hv5522.clear_enable()
 
     def get_byte(self, code_point):
+        '''
+        Generates byte representation of the 8 dots of a braille cell given an unicode braille char
+        '''
         number = ord(code_point) - 0x2800
         return [(number >> bit) & 1 for bit in range(7, -1, -1)]

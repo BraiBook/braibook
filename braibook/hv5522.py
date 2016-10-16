@@ -41,6 +41,9 @@ class hv5522:
     def clear_enable(self):
         self.__enable = 0
 
+    def get_enable(self):
+        return self.__enable
+
     def set_polarity(self):
         self.__polarity = 1
         self.__update()
