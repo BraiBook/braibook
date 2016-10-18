@@ -32,7 +32,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
-    'numpydoc',
+#    'numpydoc',
     'sphinx.ext.coverage',
     'sphinx.ext.pngmath',
     'sphinx.ext.ifconfig'
