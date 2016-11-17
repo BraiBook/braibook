@@ -1,0 +1,31 @@
+# This file represents the menu hierarchy of Braibook.
+# Each menu is two dimensional list. 
+# The first element is a string containing the ID of the menu.
+# The second element is a menu subtree
+- MAIN_MENU
+- - PLAY
+- - OPEN
+- - OPTIONS
+  - - LANGUAGE
+  - - SET_DEFAULT_SPEED 
+  - - SET_ENCODING
+  - - LECTURE_TYPE
+  - - BRAILLE_SYSTEM
+#  - - UPDATE_FW
+            
+ #     - 11 = Continuar lectura
+ #     - 12 = Abrir documento
+ #     - 13 = Configuraci\u00f3n
+ #          - 131 Idioma
+ #              - 1311 Espa\u00f1ol
+ #              - 1312 Ingles
+ #          - 132 Tipo de Lectura
+ #              - 1331 Barrido
+ #              - 1332 Caracter
+ #                  - 13321 Con espacio
+ #                  - 13222 Sin espacio
+ #          - 133 Tipo de Braille
+ #              - 1331 6 Puntos
+ #              - 1332 8 Puntos
+ #          - 134 Activar sistema de voz
+

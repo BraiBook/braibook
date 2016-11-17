@@ -15,7 +15,30 @@ def update_display(hv5522):
     if hv5522.get_enable():
         display.show_byte(hv5522.hv_out)
 
+
+def load_prefs():
+    return yaml.load(
+        '!!python/object:__main__.Preferences' +
+        open('resources/preferences.yml', 'r').read())
+
+
+def save_prefs():
+    print("TODO")
+
+
+def shutdown():
+    print("TODO")
+
 if __name__ == '__main__':
+    # LOAD PREFERENCES
+
+    # LOAD INTERFACE
+
+    # LOAD BACKEND
+
+    # LOAD FRONTEND
+
+    # THIS SHOULD BE IN BACKEND/INTERFACE
     main = Tk()
     display = Display(main, width=200, height=200)
     display2 = Display(main, width=200, height=200)

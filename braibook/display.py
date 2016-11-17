@@ -5,7 +5,6 @@ from tkinter import Canvas
 from itertools import product
 from collections import deque
 from .unicode_gen import brl2str, byte2brl
-
 from .tables import LATIN
 
 

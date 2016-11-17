@@ -1,0 +1,12 @@
+# This is a template for translation strings. Each entry is a correspondance 
+# between the string ID and the correspondant string
+
+# MENU STRINGS
+PLAY: read last book
+OPEN: open
+OPTIONS: options
+LANGUAGE: language
+SET_DEFAULT_SPEED: speed
+SET_ENCODING: encoding
+LECTURE_TYPE: update
+BRAILLE_SYSTEM: 
